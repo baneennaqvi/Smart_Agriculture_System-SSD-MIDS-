@@ -1,0 +1,18 @@
+services:
+  backend:
+    build: ./smart_agriculture_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=your-secret-key-here
+    volumes:
+      - ./smart_agriculture_backend:/app
+
+  frontend:
+    build: ./smart_agriculture_frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    volumes:
+      - ./smart_agriculture_frontend:/app
